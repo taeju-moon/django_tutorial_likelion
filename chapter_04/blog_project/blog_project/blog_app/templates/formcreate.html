@@ -1,0 +1,9 @@
+<h2>django 입력을 위한 페이지</h2>
+<!--사진 데이터 불러오려면 enctype 설정해야함-->
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="새 글 생성하기">
+</form>

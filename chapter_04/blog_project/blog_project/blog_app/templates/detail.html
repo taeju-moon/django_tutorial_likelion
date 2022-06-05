@@ -1,0 +1,26 @@
+<h1>제목</h1>
+{{ post.title }}
+<h2>날짜</h2>
+{{ post.date }}
+<h3>본문</h3>
+{{ post.body }}
+
+<br>
+{% if post.photo %}
+    <!--사진 찍어주기 ".url 사용" -->
+    <img src="{{ post.photo.url }}" alt="" height="50" width="100">    
+{% endif %}
+<br>
+<h3>댓글</h3>
+<form method="POST" action="{% url 'createcomment' post.id %}">
+    {% csrf_token %}
+    {{ comment_form }}
+    <input type="submit" value="댓글 쓰기">
+</form>
+
+<h4>댓글 목록</h4>
+<!--post를 참조하는 comment객체 모두를 가져와라-->
+{% for comment in post.comment_set.all %}
+    <p>{{comment}}</p>
+    <hr>
+{% endfor %}
