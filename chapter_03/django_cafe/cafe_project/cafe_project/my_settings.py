@@ -1,1 +1,0 @@
-secret_key = 'django-insecure-tmd=a=hi**oou#^*dm_+yw$a!x5u^ozp4n)-om+c65!a^4++#_'
