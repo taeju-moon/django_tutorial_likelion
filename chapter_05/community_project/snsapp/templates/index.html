@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">자유게시판</h1>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">DataTables Example</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th width="60%">글 제목</th>
+                        <th>작성 날짜</th>
+                        <th>작성자</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    {% for post in posts %}
+                    <tr>
+                        <th><a href="{% url 'detail' post.id %}">{{post.title}}</a></th>
+                        <th>{{post.date}}</th>
+                        <th>익명</th>
+                    </tr>
+                    {% endfor %}
+                </tfoot>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<a href="{% url 'postcreate' %}" class="btn btn-dark btn-icon-split">
+    <span class="icon text-white-50">
+        <i class="fas fa-flag"></i>
+    </span>
+    <span class="text">글쓰기</span>
+</a>
+
+
+<br>
+{% if posts.has_previous %}
+    <a href="?page=1">첫 페이지</a>
+    <a href="?page={{posts.previous_page_number}}">이전페이지</a>
+{% endif %}
+
+
+<!-- 현재 몇 페이지 -->
+<span>{{posts.number}}</span> / 
+<!-- 총 몇 페이지 -->
+<span>{{posts.paginator.num_pages}}</span>
+
+{% if posts.has_next %}
+    <a href="?page={{posts.next_page_number}}">다음 페이지</a>
+    <a href="?page={{posts.paginator.num_pages}}">마지막 페이지</a>
+{% endif %}
+
+
+{% endblock %}

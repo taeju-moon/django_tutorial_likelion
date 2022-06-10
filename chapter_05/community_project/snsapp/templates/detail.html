@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Detail</h1>
+
+<h1>title: {{post.title}}</h1>
+<h2>date: {{post.date}}</h2>
+<p>
+    {{post.body}}
+</p>
+
+<form method="POST" action="{% url 'create_comment' post.id %}">
+    {% csrf_token %}
+    {{comment_form}}
+    <input type="submit" value="SUBMIT"/>
+</form>
+{% endblock %}

@@ -40,7 +40,7 @@ def formcreate(request):
     else:
         #HTML을 가져다 주기
         form = BlogForm()
-    return render(request, "formcreate.html", {"form":form}) #찍어서 보내주고 싶은 내용을 세번째 인자에 딕셔너리 형태로 전달
+        return render(request, "formcreate.html", {"form":form}) #찍어서 보내주고 싶은 내용을 세번째 인자에 딕셔너리 형태로 전달
 
 #model form을 이용해 입력값을 받는 함수
 def modelcreate(request):
