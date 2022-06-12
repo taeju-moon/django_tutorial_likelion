@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="border rounded p-1 mb-5">
+<h1>{{post.title}}</h1>
+<p>{{post.date}}</p>
+
+
+<p class="mb-5 fs-4">
+    {{post.body}}
+</p>
+</div>
+<!--댓글 목록-->
+
+{% for comment in post.idcomment_set.all %}
+    <p>{{comment.comment}}</p>
+    <hr>
+{% endfor %}
+
+{% if user.is_authenticated %}
+<!--댓글 입력-->
+<form method="POST" action="{% url 'new_idComment' post.id %}">
+    {% csrf_token %}
+    {{comment_form}}
+    <button type="submit" class="btn btn-secondary mt-3">제출</button>
+</form>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">실명게시판</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th width="60%">글 제목</th>
+                        <th>작성 날짜</th>
+                        <th>작성자</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    {% for post in posts %}
+                    <tr>
+                        <th><a href="{% url 'idDetail' post.id %}">{{post.title}}</a></th>
+                        <th>{{post.date}}</th>
+                        <th>{{post.writer.username}}</th>
+                    </tr>
+                    {% endfor %}
+                </tfoot>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% if user.is_authenticated %}
+<a href="{% url 'idPostcreate' %}" class="btn btn-dark btn-icon-split">
+    <span class="icon text-white-50">
+        <i class="fas fa-flag"></i>
+    </span>
+    <span class="text">글쓰기</span>
+</a>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>새 글 작성</h1>
+<form action="{% url 'postcreate' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {{form.as_table}}
+    </table>
+    <button type="submit" class="btn btn-secondary">제출</button>
+</form>
+{% endblock %}
