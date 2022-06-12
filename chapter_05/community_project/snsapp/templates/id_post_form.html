@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>새 글 작성</h1>
-<form action="{% url 'postcreate' %}" method="POST" enctype="multipart/form-data">
+<form action="{% url 'idPostcreate' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <table>
         {{form.as_table}}
