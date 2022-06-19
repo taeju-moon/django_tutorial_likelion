@@ -1,4 +1,5 @@
 {% load static %}
+{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,6 +57,9 @@
                                         <button type="submit" class="btn btn-secondary btn-user btn-block">
                                             Login
                                         </button>
+                                        <a href="{% provider_login_url 'google' %}" class="btn btn-google btn-user btn-block">
+                                            <i class="fab fa-google fa-fw"></i>구글 로그인
+                                        </a>
                                         <hr>
                                     </form>
                                     <div class="text-center">

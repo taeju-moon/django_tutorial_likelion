@@ -2,9 +2,13 @@ from xml.etree.ElementTree import Comment
 from django.shortcuts import get_object_or_404, render, redirect
 from .forms import PostForm, CommentForm, IdPostForm, IdCommentForm
 from .models import Post, IdPost
+from django.core.paginator import Paginator
 
 def home(request):
     posts = Post.objects.all().order_by("-date")
+    paginator = Paginator(posts, 5)
+    pagnum = request.GET.get('page')
+    posts = paginator.get_page(pagnum)
     return render(request, "index.html", {"posts":posts})
 
 def postcreate(request):
