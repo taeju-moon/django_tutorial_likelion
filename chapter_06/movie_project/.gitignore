@@ -1,5 +1,5 @@
-my_settings
-store_key
+my_settings.py
+store_key.py
 
 # Created by https://www.toptal.com/developers/gitignore/api/django
 # Edit at https://www.toptal.com/developers/gitignore?templates=django
